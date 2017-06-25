@@ -18,7 +18,7 @@
  *
  * @package    Comicker
  * @subpackage Comicker/admin
- * @author     Joshua McKendall <joshuamckendall@gmail.com>
+ * @author     Joshua McKendall <comicker@joshuamckendall.com>
  */
 class Comicker_Admin {
 
@@ -96,33 +96,42 @@ class Comicker_Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		register_post_type('comic', array(
-			'labels' => array(
-				'name' => _x('Comics', 'post type general name'),
-				'singular_name' => _x('Comic', 'post type singular name'),
-				'all_items' => __('All Comics'),
-				'add_new' => _x('Add Comic', 'Comic'),
-				'add_new_item' => __('Add Comic'),
-				'edit_item' => __('Edit Comic'),
-				'new_item' => __('New Comic'),
-				'view_item' => __('View Comic'),
-				'search_items' => __('Search In Comics'),
-				'not_found' => __('No Comic Found'),
-				'not_found_in_trash' => __('No Comic Found In Trash.'),
-				'parent_item_colon' => ''
-			),
+
+		$comic_labels = array(
+			'name' => _x('Comics', 'comicker'),
+			'singular_name' => _x('Comic', 'comicker'),
+			'all_items' => __('All Comics', 'comicker'),
+			'add_new' => _x('Add Comic', 'comicker'),
+			'add_new_item' => __('Add Comic', 'comicker'),
+			'edit_item' => __('Edit Comic', 'comicker'),
+			'new_item' => __('New Comic', 'comicker'),
+			'view_item' => __('View Comic', 'comicker'),
+			'view_items' => __('View Comcis', 'comicker'),
+			'featured_image' => __('Comic Page', 'comicker'),
+			'set_featured_image' => __('Set comic page', 'comicker'),
+			'remove_featured_image' => __('Remove comic page', 'comicker'),
+			'use_featured_image' => __('Use as comic page', 'comicker'),
+			'search_items' => __('Search In Comics', 'comicker'),
+			'not_found' => __('No Comic Found', 'comicker'),
+			'not_found_in_trash' => __('No Comic Found In Trash.', 'comicker')
+		);
+
+		$comic_args = array(
+			'labels' => $comic_labels,
 			'public' => true,
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'show_ui' => true,
-			'query_var' => false,
-			'rewrite' => false,
+			'query_var' => true,
+			'rewrite' => true,
 			'capability_true' => 'attachment',
 			'hierarchical' => false,
 			'menu_position' => 6,
-			'supports' => array('title','excerpt','publicize','comments'),
-			'taxonomies' => array('post_tag'),
+			'supports' => array('title','editor','publicize','comments'),
+			'taxonomies' => array('post_tag', 'chapter'),
 			'menu_icon' => '',
-		));
+		);
+
+		register_post_type('comic', $comic_args);
 		
 	 }
 

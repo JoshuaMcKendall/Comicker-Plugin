@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    Comicker
  * @subpackage Comciker/includes
- * @author     Joshua McKendall <joshuamckendall@gmail.com>
+ * @author     Joshua McKendall <comicker@joshuamckendall.com>
  */
 class Comicker_Activator {
 
