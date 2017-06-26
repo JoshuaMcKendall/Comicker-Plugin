@@ -30,7 +30,7 @@ class Comicker_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-		$this->create_options();
+
 	}
 	
 	private function create_options() {
@@ -39,3 +39,5 @@ class Comicker_Activator {
 	
 
 }
+
+Comicker_Activator::activate();

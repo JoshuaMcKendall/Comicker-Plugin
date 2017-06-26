@@ -54,6 +54,23 @@ class Comicker_Admin {
 
 	}
 
+
+	/**
+	 * Render admin views.
+	 *
+	 * @since     1.0.0
+	 * @param      string    $view       The view to render from admin/views.
+	 */
+	private function render($view) {
+
+		$admin_views_path = plugin_dir_path( __FILE__ ) . 'views/';
+
+		ob_start();
+		require($admin_views_path . $view . '.php');
+		return ob_get_clean();
+
+	}
+
 	/**
 	 * Register the stylesheets for the Dashboard.
 	 *
@@ -64,8 +81,9 @@ class Comicker_Admin {
 		/**
 		 * Enqueue any custom styles for admin area.
 		 */
+		wp_register_style( 'comicker_wp_admin_css', plugin_dir_url( __FILE__ ) . 'css/comicker-admin.css', false, $this->version );
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/comicker-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'comicker_wp_admin_css' );
 
 	}
 
@@ -79,8 +97,9 @@ class Comicker_Admin {
 		/**
 		 * Enqueue cusotm javascript for admin area
 		 */
+		wp_register_script('comicker_wp_admin_js', plugin_dir_url( __FILE__ ) . 'js/comicker-admin.js', array('jquery'), $this->version );
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/comicker-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'comicker_wp_admin_js' );
 
 	}
 	
@@ -127,12 +146,99 @@ class Comicker_Admin {
 			'hierarchical' => false,
 			'menu_position' => 6,
 			'supports' => array('title','editor','publicize','comments'),
-			'taxonomies' => array('post_tag', 'chapter'),
-			'menu_icon' => '',
+			'taxonomies' => array('chapter', 'post_tag'),
+			'menu_icon' => ''
 		);
 
 		register_post_type('comic', $comic_args);
 		
 	 }
+
+
+
+	/**
+	 * Register custom taxonomies for comic post type.
+	 *
+	 * @since    1.0.0
+	 */
+
+	public function register_taxonomies() {
+
+		/**
+		 * Register Chapter Taxonomy for Comic post type.
+		 *
+		 * @since 1.0.0
+		 */
+		$chap_labels = array(
+			'name' => _x('Chapters', 'comicker'),
+			'singular_name' => _x('Chapter', 'comicker'),
+			'menu_name' => __('Chapters', 'comicker'),
+			'all_items' => __('All Chapters', 'comicker'),
+			'edit_item' => __('Edit Chapter', 'comicker'),
+			'view_item' => __('View Chapter', 'comicker'),
+			'update_item' => __('Update Chapter', 'comicker'),
+			'add_new_item' => __('Add New Chapter', 'comicker'),
+			'new_item_name' => __('New Chapter Name', 'comciker'),
+			'search_items' => __('Search Chapters')
+
+			);
+
+		$chap_args = array(
+			'label' => _x('Chapters', 'comicker'),
+			'labels' => $chap_labels,
+			'hierarchical' => false,
+			'show_ui' => false,
+			'show_in_rest' => true,
+			'rest_base' => 'chapter',
+			'show_tagcloud' => false,
+			'query_var' => 'chapter',
+			'rewrite' => true,
+			'sort' => true			
+			);
+
+		register_taxonomy('chapter', 'comic', $chap_args);
+	}
+
+	/**
+	 * Adds the 'Chapters' submenu to comic post type
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_chapters_submenu() {
+
+		add_submenu_page('edit.php?post_type=comic', __('Chapters', 'comicker'), __('Chapters', 'comicker'), 'manage_categories', 'comicker-chapters', array(&$this, 'render_comicker_chapters_page'));
+
+	}
+
+	/**
+	 * Adds the 'Comicker' submenu under settings.
+	 *
+	 * @since    1.0.0
+	 */
+	public function add_comicker_options_submenu() {
+
+		add_submenu_page('options-general.php', __('Comicker', 'comicker'), __('Comicker', 'comicker'), 'manage_options', 'comicker-options', array(&$this, 'render_comicker_options_page'));
+
+	}
+
+	/**
+	 * Renders the page for the 'Chapters' submenu under Comics.
+	 *
+	 * @since    1.0.0
+	 */
+	public function render_comicker_chapters_page() {
+		
+		echo $this->render('comicker-chapters-page');
+	}
+
+	/**
+	 * Renders the page for Comicker options under settings.
+	 *
+	 * @since    1.0.0
+	 */
+	public function render_comicker_options_page() {
+		
+		echo $this->render('comicker-options-page');
+	}
 
 }

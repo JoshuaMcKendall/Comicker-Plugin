@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provide a dashboard view for the plugin
+ * The Chapters page for Chapters submenu
  *
  *
  * @link       https://github.com/JoshuaMcKendall/Comicker-Plugin/admin/views
@@ -11,8 +11,10 @@
  * @subpackage Comicker/admin/partials
  */
 
+?>
+
 <div class="wrap nosubsub">
-<h1 class="wp-heading-inline">Tags</h1>
+<h1 class="wp-heading-inline">Chapters</h1>
 
 
 <hr class="wp-header-end">
@@ -24,9 +26,9 @@
 <input type="hidden" name="post_type" value="comic">
 
 <p class="search-box">
-	<label class="screen-reader-text" for="tag-search-input">Search Tags:</label>
+	<label class="screen-reader-text" for="tag-search-input">Search Chapters:</label>
 	<input type="search" id="tag-search-input" name="s" value="">
-	<input type="submit" id="search-submit" class="button" value="Search Tags"></p>
+	<input type="submit" id="search-submit" class="button" value="Search Chapters"></p>
 
 </form>
 
@@ -37,7 +39,7 @@
 
 
 <div class="form-wrap">
-<h2>Add New Tag</h2>
+<h2>Add New Chapter</h2>
 <form id="addtag" method="post" action="edit-tags.php" class="validate">
 <input type="hidden" name="action" value="add-tag">
 <input type="hidden" name="screen" value="edit-post_tag">
@@ -132,3 +134,5 @@
 
 </div><!-- /col-container -->
 </div>
+
+<?php
