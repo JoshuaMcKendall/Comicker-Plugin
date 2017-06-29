@@ -8,7 +8,7 @@
  * @since      1.0.0
  *
  * @package    Comicker
- * @subpackage Comicker/admin/partials
+ * @subpackage Comicker/admin/views
  */
 
 ?>
@@ -16,5 +16,3 @@
 <div class="wrap nosubsub">
 <h1 class="wp-heading-inline">Comicker Options</h1>
 </div>
-
-<?php

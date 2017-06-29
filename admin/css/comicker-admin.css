@@ -31,3 +31,41 @@ font-family: 'comicker';
 #adminmenu .menu-icon-comic div.wp-menu-image:before {
 	content:'\0041';
 }
+
+#comic-meta-box {
+	visibility: hidden;
+}
+
+#comic-meta-box.postbox .inside .no-image {
+    padding: 30px;
+    background-color: #EEE;
+    border: 2px dashed #CCC;
+}
+
+#comic-meta-box.postbox .inside .image {
+    padding: 0px;
+    background-color: #FFF;
+    border: 2px dashed #CCC;
+}
+
+#comic-meta-box.postbox .inside .image .comic-page {
+    display: block;
+    margin: auto;
+    width: 100%;
+}
+
+#comic-meta-box.postbox .inside .add-comic.button.show {
+	position: relative;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+}
+
+#comic-meta-box.postbox .inside .add-comic.button.hidden {
+    position: relative;
+    margin: 0;
+    text-align: center;
+    display: none;
+    visibility: hidden;
+}
+

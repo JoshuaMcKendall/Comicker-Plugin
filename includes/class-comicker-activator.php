@@ -22,15 +22,24 @@
  */
 class Comicker_Activator {
 
+	private function __construct() {
+		
+	}
+
 	/**
-	 * Short Description.
 	 *
-	 * Long Description.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+		
+		static $instance = null;
 
+		if($instance == null) {
+			$instance = new Comicker_Activator();
+		}
+
+		return $instance;
 	}
 	
 	private function create_options() {
@@ -39,5 +48,3 @@ class Comicker_Activator {
 	
 
 }
-
-Comicker_Activator::activate();

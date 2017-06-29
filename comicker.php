@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       Comicker
  * Plugin URI:        TBA
- * Description:       A webcomic plugin.
+ * Description:       A simple plugin for webcomic creators that makes it easier to create, edit, and manage webcomics on, well, the web.
  * Version:           1.0.0
  * Author:            Joshua McKendall
  * Author URI:        http://joshuamckendall.com
