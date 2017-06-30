@@ -69,7 +69,7 @@ class Comicker {
 	public function __construct() {
 
 		$this->plugin_name = __('Comicker', 'comicker');
-		$this->version = '1.0.0(alpha 1.9.0)';
+		$this->version = '1.0.0(alpha 1.9.79)';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -153,11 +153,12 @@ class Comicker {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'add_settings' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 		$this->loader->add_action( 'init', $plugin_admin, 'register_post_types' );
 		$this->loader->add_action( 'init', $plugin_admin, 'register_taxonomies' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_comicker_options_submenu' );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_comic_meta_box' );
+		$this->loader->add_action( 'save_post_comic', $plugin_admin, 'save_comic_page' );
 	}
 
 	/**

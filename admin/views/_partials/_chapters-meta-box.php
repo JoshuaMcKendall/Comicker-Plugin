@@ -29,9 +29,9 @@
 
 					echo '
 
-						<li id="chapter-'.$key.'" class="chapter">
+						<li id="chapter-'.$chapter->ID.'" class="chapter">
 							<label class="selectit">
-								<input value="'.$chapter->ID.'" type="radio" name="comic_chapter[]" id="in-chapter-'.$chapter->ID.'"> 
+								<input value="'.$chapter->ID.'" type="radio" name="comic_chapter[]" id="in-chapter-'.$chapter->ID.'" > 
 								'.$chapter->name.'
 							</label>
 						</li> 

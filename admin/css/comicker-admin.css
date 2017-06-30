@@ -69,3 +69,12 @@ font-family: 'comicker';
     visibility: hidden;
 }
 
+#comic-meta-box .hndle .remove-comic {
+    float: right;
+}
+
+#open-comic-library {
+
+    font-style: normal;
+    text-decoration: none;
+}

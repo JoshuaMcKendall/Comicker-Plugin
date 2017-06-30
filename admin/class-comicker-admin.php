@@ -123,11 +123,11 @@ class Comicker_Admin {
 	}
 
 	/**
-	 * Adds all the options and settings that Comicker needs.
+	 * Registers all the options and settings that Comicker needs.
 	 *
 	 * @since    1.0.0
 	 */
-	 public function add_settings() {
+	 public function register_settings() {
 
 
 	 	add_settings_section('comicker_reading_section', 'Comicker Reading Settings', array($this, 'render_reading_settings_section'), 'reading');
@@ -155,16 +155,12 @@ class Comicker_Admin {
 			'name' => _x('Comics', 'comicker'),
 			'singular_name' => _x('Comic', 'comicker'),
 			'all_items' => __('All Comics', 'comicker'),
-			'add_new' => _x('Add Comic', 'comicker'),
-			'add_new_item' => __('Add Comic', 'comicker'),
+			'add_new' => _x('Add New', 'comicker'),
+			'add_new_item' => __('Add New Comic', 'comicker'),
 			'edit_item' => __('Edit Comic', 'comicker'),
 			'new_item' => __('New Comic', 'comicker'),
 			'view_item' => __('View Comic', 'comicker'),
 			'view_items' => __('View Comcis', 'comicker'),
-			'featured_image' => __('Comic Page', 'comicker'),
-			'set_featured_image' => __('Set comic page', 'comicker'),
-			'remove_featured_image' => __('Remove comic page', 'comicker'),
-			'use_featured_image' => __('Use as comic page', 'comicker'),
 			'search_items' => __('Search In Comics', 'comicker'),
 			'not_found' => __('No Comic Found', 'comicker'),
 			'not_found_in_trash' => __('No Comic Found In Trash.', 'comicker')
@@ -262,7 +258,7 @@ class Comicker_Admin {
 	 */
 	public function add_comic_meta_box() {
 
-		add_meta_box('comic-meta-box', __('Comic', 'comicker'), array(&$this, 'render_comicker_comic_meta_box'), 'comic', 'normal', 'high');
+		add_meta_box('comic-meta-box', __('Comic Editor', 'comicker'), array(&$this, 'render_comicker_comic_meta_box'), 'comic', 'normal', 'high');
 
 	}
 
@@ -316,4 +312,8 @@ class Comicker_Admin {
 
 	}
 
+
+	public function save_comic_page() {
+		
+	}
 }
