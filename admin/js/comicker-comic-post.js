@@ -60,9 +60,15 @@
 					]
 				});
 
-				comic_library.open().trigger('open');
-
 				comic_library.on('open', function() {
+
+					if($.trim($comic_id_input.val()).length > 0 && selection == null) {
+
+						selection = comic_library.state().get('selection');
+						selection.add(wp.media.attachment($comic_id_input.val()));
+
+					}
+
 
 					if(selection && selected)
 						selection.add(wp.media.attachment(selected.id));
@@ -79,6 +85,9 @@
 
 					}
 				});
+
+
+				comic_library.open();
 			});
 
 		}
@@ -86,7 +95,6 @@
 
 		function renderComicEditor() {
 
-			//$comic_meta_box_hndle.append('<div id="mceu_1" class="mce-widget mce-btn" tabindex="-1" role="button" aria-label="Bold"><button role="presentation" type="button" tabindex="-1"><i class="mce-ico mce-i-bold"></i></button></div>');
 			$comic_meta_box_hndle.append($remove_comic_button);
 			$comic_meta_box_hndle.css('cursor', 'default').unbind('click.postboxes');
 			$comic_meta_box.insertBefore( $('#postdivrich') );
@@ -117,8 +125,6 @@
 
 		function addComicToEditor(comic) {
 
-			console.log(comic);
-
 			$add_comic_button.removeClass('show').addClass('hidden');
 			$remove_comic_button.removeClass('hidden');
 			$inside_comic_meta_box.find( $('.no-image') ).removeClass('no-image').addClass('image');
@@ -140,7 +146,7 @@
 				}
 
 
-				$comic_page.attr( 'src', '' ).removeClass('hidden');
+				$comic_page.attr( 'src', '' ).addClass('hidden');
 				$comic_id_input.val( '' );
 				$add_comic_button.removeClass('hidden').addClass('show');
 				$remove_comic_button.addClass('hidden');
@@ -151,6 +157,7 @@
 
 		}
 
+		// Start everything up.
 		init();
 
 	});

@@ -158,7 +158,7 @@ class Comicker {
 		$this->loader->add_action( 'init', $plugin_admin, 'register_taxonomies' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_comicker_options_submenu' );
 		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'add_comic_meta_box' );
-		$this->loader->add_action( 'save_post_comic', $plugin_admin, 'save_comic_page' );
+		$this->loader->add_action( 'save_post_comic', $plugin_admin, 'save_comic_page', 10, 3 );
 	}
 
 	/**

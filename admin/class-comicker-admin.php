@@ -312,8 +312,23 @@ class Comicker_Admin {
 
 	}
 
+	public function save_comic_page( $post_id, $post, $update ) {
 
-	public function save_comic_page() {
-		
+
+		if( !empty($_POST) && check_admin_referer('save_comic_page', 'comic_editor_nonce') ) {
+
+
+			if( isset( $_POST['_comic_id'] ) ) {
+
+				$comic_id = (int) absint($_POST['_comic_id']);
+
+
+				update_post_meta( $post_id, '_comic_id', $comic_id );
+
+			}
+			
+
+		}
+
 	}
 }
